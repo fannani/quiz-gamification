@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default {
+const data = {
     config : {
         title : "Quiz pertama",
-        lives : 4,
+        description : "Nyawa yang disediakan adalah jawaban salah yang diperbolehkan",
+        lives : 0,
         times: 60,
     },
     quiz : [
@@ -33,3 +34,7 @@ export default {
         }
     ]
 }
+
+data.config.lives =  Math.ceil(data.quiz.length / 2);
+
+export default data;

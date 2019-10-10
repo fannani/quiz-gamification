@@ -50,7 +50,7 @@
   border-radius: 16px;
   border: solid #e5e5e5;
   border-width: 2px 2px 4px;
-  padding: 10px 20px;
+  padding: 7px 15px;
   text-align: left;
   margin: 5px;
   display: inline-block;
@@ -151,13 +151,38 @@
 .content .title {
   font-weight: bold;
   font-size: 25px;
-  margin-top:100px;
+  margin-top:60px;
+    margin-bottom: 70px;
 }
 .content .description {
-  font-size: 25px;
-
+  font-size: 21px;
 }
 .content .scoreboard {
-  margin-top:100px;
+  margin-top:30px;
+}
+
+.btn-start {
+    margin-top:20px;
+}
+.star {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+.star-container {
+    margin: 5px;
+}
+.star-wrapper {
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+}
+.star-container p {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-family: din-round;
 }
 

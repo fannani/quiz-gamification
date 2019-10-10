@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b76c2e8a-5300-461c-b8da-17c5593ef047" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/mario.jfif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/mario.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/star-off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/star.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data.js" afterDir="false" />
     </list>
@@ -21,7 +22,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -29,8 +30,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\rahadyan\Documents\projects\gamifikasi\public" />
       <recent name="C:\Users\rahadyan\Documents\projects\gamifikasi\src\assets\images" />
+      <recent name="C:\Users\rahadyan\Documents\projects\gamifikasi\public" />
       <recent name="C:\Users\rahadyan\Documents\projects\gamifikasi\src\assets\fonts" />
     </key>
   </component>
@@ -58,7 +59,7 @@
       <updated>1570629168594</updated>
       <workItem from="1570629173303" duration="16808000" />
       <workItem from="1570667699349" duration="681000" />
-      <workItem from="1570669828115" duration="587000" />
+      <workItem from="1570669828115" duration="3998000" />
     </task>
     <servers />
   </component>

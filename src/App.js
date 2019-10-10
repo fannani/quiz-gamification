@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import data from "./data";
 import love from './assets/images/love.png';
+import star from './assets/images/star.png';
+import starOff from './assets/images/star-off.png';
 
 const ProgressInTracker = ({percentage}) => (
     <div style={{ transition : 'width 1s linear',width: `${percentage}%`, backgroundColor: "#93D333",height:'100%', borderRadius: "10px"}}>
@@ -31,13 +33,17 @@ const Progress = ({value}) => (
     </div>
 )
 
-const Content = ({isStart, result, question, choice, answer, onClick, score = 0, title, onStart}) => {
+const Content = ({isStart, result, question, choice, answer, onClick, score = 0, title, onStart, starResult}) => {
   if(!isStart){
     return (
       <div className="content">
         <div className="scoreboard">
           <span className="title">{title}</span> <br/>
-          <button className="btn" onClick={onStart}>Mulai</button>
+          <p>
+          <span className="description">Waktu : {data.config.times} detik</span> <br/>
+          <span className="description">{data.config.description}</span> <br/>
+          </p>
+          <button className="btn btn-start" onClick={onStart}>Mulai</button>
 
         </div>
       </div>
@@ -47,6 +53,17 @@ const Content = ({isStart, result, question, choice, answer, onClick, score = 0,
     return (
       <div className="content">
         <div className="scoreboard">
+          <div className="star-wrapper">
+            <div className="star-container">
+              <img className="star" src={starResult >= 1 ? star : starOff} />
+            </div>
+            <div className="star-container">
+              <img className="star" src={starResult >= 2 ? star : starOff} />
+            </div>
+            <div className="star-container">
+              <img className="star" src={starResult >= 3 ? star : starOff} />
+            </div>
+          </div>
           <span className="title">Quiz selesai</span> <br/>
           <span className="description">Score anda adalah : {score}</span>
         </div>
@@ -74,6 +91,7 @@ function App() {
   const [result, setResult] = useState(false);
   const [answer, setAnswer] = useState("");
   const [info, setInfo] = useState('');
+  const [starResult, setStarResult] = useState(0);
   const [progress, setProgress] = useState(100);
   const [gameover, setGameover] = useState(false);
   const [btnCaption, setBtnCaption] = useState("Periksa");
@@ -136,6 +154,15 @@ function App() {
       setInfo('');
       setBtnCaption("Periksa");
     } else {
+      let stars = 1;
+
+      if(progress >= 50){
+        stars++;
+      }
+      if(lives >= data.config.lives/2){
+        stars++;
+      }
+      setStarResult(stars);
       setBtnCaption("Main lagi")
       setAnswered('notyet');
       setInfo('');
@@ -169,7 +196,7 @@ function App() {
         <Lives value={lives} />
         <div className="score" style={{marginLeft : '10px', paddingBottom : '5px'}}>score : {score}</div>
       </div>
-      <Content isStart={isStart} onStart={() => {
+      <Content starResult={starResult} isStart={isStart} onStart={() => {
         setIsStart(true);
       }} title={data.config.title} score={score} result={result} question={data.quiz[index].question} choice={data.quiz[index].choice} answer={answer} onClick={(value) => {
         if(answered === 'notyet') {
