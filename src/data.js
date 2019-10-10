@@ -1,13 +1,14 @@
-
+import React from 'react';
 
 export default {
     config : {
-        lives : 3,
-        times: 30,
+        title : "Quiz pertama",
+        lives : 4,
+        times: 60,
     },
     quiz : [
         {
-            question : "Ini adalah soal pertama, silahkan dijawab yang menurut anda benar, dengan memilih pilihan dibawah ini ?",
+            question : "Pilihlah jawaban dibawah ini, yang menurut anda benar ?",
             choice : ['Jawaban pertama', 'Jawaban kedua', 'yang benar ini','ini jawaban salah'],
             answer : 'yang benar ini',
             score : 20

@@ -31,7 +31,18 @@ const Progress = ({value}) => (
     </div>
 )
 
-const Content = ({result, question, choice, answer, onClick, score = 0}) => {
+const Content = ({isStart, result, question, choice, answer, onClick, score = 0, title, onStart}) => {
+  if(!isStart){
+    return (
+      <div className="content">
+        <div className="scoreboard">
+          <span className="title">{title}</span> <br/>
+          <button className="btn" onClick={onStart}>Mulai</button>
+
+        </div>
+      </div>
+    )
+  }
   if(result){
     return (
       <div className="content">
@@ -67,6 +78,7 @@ function App() {
   const [gameover, setGameover] = useState(false);
   const [btnCaption, setBtnCaption] = useState("Periksa");
   const [answered, setAnswered] = useState("notyet");
+  const [isStart, setIsStart] = useState(false);
 
   useEffect(() => {
     if(gameover) {
@@ -87,7 +99,7 @@ function App() {
   useEffect(() => {
     const second = 100/data.config.times;
     let interval;
-    if(!gameover) {
+    if(!gameover && isStart) {
       interval = setInterval(() => {
         setProgress(progress - second);
       }, 1000);
@@ -96,7 +108,7 @@ function App() {
       }
     }
     return () => clearInterval(interval);
-  }, [progress])
+  }, [progress, isStart])
 
   useEffect(() => {
     if(lives <= 0){
@@ -157,17 +169,28 @@ function App() {
         <Lives value={lives} />
         <div className="score" style={{marginLeft : '10px', paddingBottom : '5px'}}>score : {score}</div>
       </div>
-      <Content score={score} result={result} question={data.quiz[index].question} choice={data.quiz[index].choice} answer={answer} onClick={(value) => {
+      <Content isStart={isStart} onStart={() => {
+        setIsStart(true);
+      }} title={data.config.title} score={score} result={result} question={data.quiz[index].question} choice={data.quiz[index].choice} answer={answer} onClick={(value) => {
         if(answered === 'notyet') {
           setAnswer(value)
         }
       }} />
       <div className={`control ${answered === 'true' ? 'right-answer' : (answered === 'false'? 'wrong-answer' : '')}`}>
-        <div className="inner">
-          <span className="info">{info}</span>
-          <span className="index">{index+1}/{data.quiz.length}</span>
-          <button className={`btn ${answered === 'false' ? 'red-btn' : ''}`} onClick={check}>{btnCaption}</button>
-        </div>
+        {
+          (() => {
+            if(isStart){
+              return (
+                  <div className="inner">
+                    <span className="info">{info}</span>
+                    <span className="index">{index+1}/{data.quiz.length}</span>
+                    <button className={`btn ${answered === 'false' ? 'red-btn' : ''}`} onClick={check}>{btnCaption}</button>
+                  </div>
+              )
+            }
+          })()
+        }
+
       </div>
     </div>
   );
